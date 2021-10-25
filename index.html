@@ -62,140 +62,140 @@
         Foot step;<br>
         Food apple;<br>
         void setup() {<br>
-          size(800, 800);<br>
-          steve = new Ant();<br>
-          step = new Foot();<br>
-          apple = new Food();<br>
-          anthill = new Hill();<br>
+          &nbsp;size(800, 800);<br>
+          &nbsp;steve = new Ant();<br>
+          &nbsp;step = new Foot();<br>
+          &nbsp;apple = new Food();<br>
+          &nbsp;anthill = new Hill();<br>
         }<br>
         void draw() {<br>
-          background (163, 163, 163);<br>
-          anthill.score();<br>
-          anthill.display();<br>
-          apple.display();<br>
-          steve.move();<br>
-          steve.catchFood(apple.x, apple.y);<br>
-          steve.display();<br>
-          step.move(steve.x, steve.y);<br>
-          step.display();<br>
-          if (steve.carrying) {<br>
-            apple.move(steve.x, steve.y);<br>
-          }<br>
+            &nbsp;background (163, 163, 163);<br>
+            &nbsp;anthill.score();<br>
+            &nbsp;anthill.display();<br>
+            &nbsp;apple.display();<br>
+            &nbsp;steve.move();<br>
+            &nbsp;steve.catchFood(apple.x, apple.y);<br>
+            &nbsp;steve.display();<br>
+            &nbsp;step.move(steve.x, steve.y);<br>
+            &nbsp;step.display();<br>
+            &nbsp;if (steve.carrying) {<br>
+                &nbsp;&nbsp;apple.move(steve.x, steve.y);<br>
+                &nbsp;}<br>
           if (dist(apple.x, apple.y, anthill.x, anthill.y) <=anthill.size) {<br>
-            steve.carrying = false;<br>
-            anthill.score += 1;<br>
-            step.reduce();<br>
-            apple = new Food();<br>
-          }<br>
+            &nbsp;steve.carrying = false;<br>
+            &nbsp;anthill.score += 1;<br>
+            &nbsp;step.reduce();<br>
+            &nbsp;apple = new Food();<br>
+            &nbsp;}<br>
           if (dist(steve.x, steve.y, step.x+step.size/2, step.y+step.size/2) <= step.size/2) {<br>
-            step.enlarge();<br>
-          }<br>
+            &nbsp;step.enlarge();<br>
+            &nbsp;}<br>
           if (step.size >= 150) {<br>
-            fill(256, 256, 256);<br>
-            text("Game Over", width/2 - 50, height/2);<br>
-            stop();<br>
-          }<br>
+            &nbsp;fill(256, 256, 256);<br>
+            &nbsp;text("Game Over", width/2 - 50, height/2);<br>
+            &nbsp;stop();<br>
+            &nbsp;}<br>
         }<br>
         class Ant {<br>
-            float x, y;<br>
-            float size;<br>
-            boolean carrying;<br>
-            Ant() {<br>
-              x = width/2;<br>
-              y = height/2;<br>
-              size = 40;<br>
-              carrying = false;<br>
-            }<br>
+            &nbsp;float x, y;<br>
+            &nbsp;float size;<br>
+            &nbsp;boolean carrying;<br>
+            &nbsp;Ant() {<br>
+                &nbsp;&nbsp;x = width/2;<br>
+                &nbsp;&nbsp;y = height/2;<br>
+                &nbsp;&nbsp;size = 40;<br>
+                &nbsp;&nbsp;carrying = false;<br>
+                &nbsp;}<br>
             <br>
-            void display() {<br>
-              fill(0, 0, 0);<br>
-              circle (x, y, 18);<br>
-              circle (x+9, y+9, 15);<br>
-              circle (x+18, y+18, 18);<br>
-            }<br>
-            void catchFood(float foodX, float foodY) {<br>
-              if (dist(x, y, foodX, foodY) <= size) {<br>
-                carrying = true;<br>
+            &nbsp;void display() {<br>
+                &nbsp;&nbsp;fill(0, 0, 0);<br>
+                &nbsp;&nbsp;circle (x, y, 18);<br>
+                &nbsp;&nbsp;circle (x+9, y+9, 15);<br>
+                &nbsp;&nbsp;circle (x+18, y+18, 18);<br>
+              &nbsp;}<br>
+              &nbsp;void catchFood(float foodX, float foodY) {<br>
+                &nbsp;&nbsp;if (dist(x, y, foodX, foodY) <= size) {<br>
+                    &nbsp;&nbsp;&nbsp;carrying = true;<br>
               }<br>
-            }<br>
-            void move() {<br>
-              x = mouseX;<br>
-              y = mouseY;<br>
-            }<br>
+              &nbsp;}<br>
+              &nbsp;void move() {<br>
+                &nbsp;&nbsp;x = mouseX;<br>
+                &nbsp;&nbsp;y = mouseY;<br>
+              &nbsp;}<br>
           }<br>
           <br>
           class Food {<br>
-            float x, y;<br>
-            float easing;<br>
-            Food() {<br>
-              x = random(width);<br>
-              y = random(height);<br>
-              easing = 0.95;<br>
-            }<br>
-            void display() {<br>
-              noStroke();<br>
-              fill(0, 255, 0);<br>
-              circle (x, y, 24);<br>
-            }<br>
-            void move(float targetX, float targetY) {<br>
-              float dx = targetX - x;<br>
-              x += dx * easing;<br>
-              float dy = targetY - y;<br>
-              y += dy * easing;<br>
-            }<br>
+            &nbsp;float x, y;<br>
+            &nbsp;float easing;<br>
+            &nbsp;Food() {<br>
+                &nbsp;&nbsp;x = random(width);<br>
+                &nbsp;&nbsp;y = random(height);<br>
+                &nbsp;&nbsp;easing = 0.95;<br>
+              &nbsp;}<br>
+              &nbsp;void display() {<br>
+                &nbsp;&nbsp;noStroke();<br>
+                &nbsp;&nbsp;fill(0, 255, 0);<br>
+                &nbsp;&nbsp;circle (x, y, 24);<br>
+              &nbsp;}<br>
+              &nbsp;void move(float targetX, float targetY) {<br>
+                &nbsp;&nbsp;float dx = targetX - x;<br>
+                &nbsp;&nbsp;x += dx * easing;<br>
+                &nbsp;&nbsp;float dy = targetY - y;<br>
+                &nbsp;&nbsp;y += dy * easing;<br>
+              &nbsp;}<br>
           }<br>
           <br>
           class Foot {<br>
-            float x, y;<br>
-            float size;<br>
-            float easing;<br>
-            Foot() {<br>
-              x = width/2;<br>
-              y = height/2;<br>
-              size = 80;<br>
-              easing = 0.05;<br>
-            }<br>
+            &nbsp;float x, y;<br>
+            &nbsp;float size;<br>
+            &nbsp;float easing;<br>
+            &nbsp;Foot() {<br>
+                &nbsp;&nbsp;x = width/2;<br>
+                &nbsp;&nbsp;y = height/2;<br>
+                &nbsp;&nbsp;size = 80;<br>
+                &nbsp;&nbsp;easing = 0.05;<br>
+              &nbsp;}<br>
             <br>
-            void display() {<br>
-              noFill();<br>
-              stroke(255, 255, 255);<br>
-              square(x, y, size);<br>
-            }<br>
-            void move(float targetX, float targetY) {<br>
-              float dx = targetX - x;<br>
-              x += dx * easing;<br>
-              float dy = targetY - y;<br>
-              //footstep variables<br>
-              y += dy * easing;<br>
-            }<br>
-            void enlarge() {<br>
-              size += 0.9;<br>
-            }<br>
-            void reduce() {<br>
-              size -= 0.9;<br>
-            }<br>
+            &nbsp;void display() {<br>
+                &nbsp;&nbsp;noFill();<br>
+                &nbsp;&nbsp;stroke(255, 255, 255);<br>
+                &nbsp;&nbsp;square(x, y, size);<br>
+              &nbsp;}<br>
+              &nbsp;void move(float targetX, float targetY) {<br>
+                &nbsp;&nbsp;float dx = targetX - x;<br>
+                &nbsp;&nbsp;x += dx * easing;<br>
+                &nbsp;&nbsp;float dy = targetY - y;<br>
+                &nbsp;&nbsp;//footstep variables<br>
+                &nbsp;&nbsp;y += dy * easing;<br>
+              &nbsp;}<br>
+              &nbsp;void enlarge() {<br>
+                &nbsp;&nbsp;size += 0.9;<br>
+              &nbsp;}<br>
+              &nbsp;void reduce() {<br>
+                &nbsp;&nbsp;size -= 0.9;<br>
+              &nbsp;}<br>
           }<br>
           class Hill {<br>
-            float x, y;<br>
-            float size;<br>
-            int score;<br>
-            Hill() {<br>
-              x = 607;<br>
-              y = 640;<br>
-              size = 60;<br>
-              score = 0;<br>
-            }<br>
-            void display() {<br>
-              fill(255, 255, 255);<br>
-              noStroke();<br>
-              triangle(550, 700, 632, 580, 714, 700);<br>
-            }<br>
-            void score() {<br>
-              fill(255, 255, 0);<br>
-              text(score, 430, 50);<br>
-              text("score:",350,50); <br>   
-              textSize(30);<br>
-            }<br>
+            &nbsp;float x, y;<br>
+            &nbsp;float size;<br>
+            &nbsp;int score;<br>
+            &nbsp;Hill() {<br>
+                &nbsp;&nbsp;x = 607;<br>
+                &nbsp;&nbsp;y = 640;<br>
+                &nbsp;&nbsp;size = 60;<br>
+                &nbsp;&nbsp;score = 0;<br>
+              &nbsp;}<br>
+              &nbsp;void display() {<br>
+                &nbsp;&nbsp;fill(255, 255, 255);<br>
+                &nbsp;&nbsp;noStroke();<br>
+                &nbsp;&nbsp;triangle(550, 700, 632, 580, 714, 700);<br>
+              &nbsp;}<br>
+              &nbsp;void score() {<br>
+                &nbsp;&nbsp;fill(255, 255, 0);<br>
+                &nbsp;&nbsp;text(score, 430, 50);<br>
+                &nbsp;&nbsp;text("score:",350,50); <br>   
+                &nbsp;&nbsp;textSize(30);<br>
+              &nbsp;}<br>
           }<br>
     </p>
 
