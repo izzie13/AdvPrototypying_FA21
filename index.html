@@ -62,7 +62,8 @@
     	color: black;
     	background: pink;
     }
-    <code style="background-color:beige;"><!-- Hill anthill;
+    <pre><code style="background-color:beige;">
+        Hill anthill;
         Ant steve;
         Foot step;
         Food apple;
@@ -100,7 +101,107 @@
             text("Game Over", width/2 - 50, height/2);
             stop();
           }
-        } --></code> 
+        }
+        class Ant {
+            float x, y;
+            float size;
+            boolean carrying;
+            Ant() {
+              x = width/2;
+              y = height/2;
+              size = 40;
+              carrying = false;
+            }
+          
+            void display() {
+              fill(0, 0, 0);
+              circle (x, y, 18);
+              circle (x+9, y+9, 15);
+              circle (x+18, y+18, 18);
+            }
+            void catchFood(float foodX, float foodY) {
+              if (dist(x, y, foodX, foodY) <= size) {
+                carrying = true;
+              }
+            }
+            void move() {
+              x = mouseX;
+              y = mouseY;
+            }
+          }
+          class Food {
+            float x, y;
+            float easing;
+            Food() {
+              x = random(width);
+              y = random(height);
+              easing = 0.95;
+            }
+            void display() {
+              noStroke();
+              fill(0, 255, 0);
+              circle (x, y, 24);
+            }
+            void move(float targetX, float targetY) {
+              float dx = targetX - x;
+              x += dx * easing;
+              float dy = targetY - y;
+              y += dy * easing;
+            }
+          }
+          class Foot {
+            float x, y;
+            float size;
+            float easing;
+            Foot() {
+              x = width/2;
+              y = height/2;
+              size = 80;
+              easing = 0.05;
+            }
+          
+            void display() {
+              noFill();
+              stroke(255, 255, 255);
+              square(x, y, size);
+            }
+            void move(float targetX, float targetY) {
+              float dx = targetX - x;
+              x += dx * easing;
+              float dy = targetY - y;
+              //footstep variables
+              y += dy * easing;
+            }
+            void enlarge() {
+              size += 0.9;
+            }
+            void reduce() {
+              size -= 0.9;
+            }
+          }
+          class Hill {
+            float x, y;
+            float size;
+            int score;
+            Hill() {
+              x = 607;
+              y = 640;
+              size = 60;
+              score = 0;
+            }
+            void display() {
+              fill(255, 255, 255);
+              noStroke();
+              triangle(550, 700, 632, 580, 714, 700);
+            }
+            void score() {
+              fill(255, 255, 0);
+              text(score, 430, 50);
+              text("score:",350,50);    
+              textSize(30);
+            }
+          }
+      </code></pre>
         
 
 
@@ -156,7 +257,7 @@
     ant’s head turns toward to the apple while it is moving, and when I apply the same code to the footstep, it doesn’t work, under the easing function, I cannot determine the previous positions of the step to calculate<br> 
     the vector and make it turns to the certain direction. For the physical controller, I used cardboard to make it more easier to hold and operate. For the future consideration, I want to play with the gradient background<br> 
     to simulate the real sunrise and sunset sky through the photocell sensor.
-</p><br><br>
+</p><br>
 
 <h2 style="background-color:powderblue;"> Programming Design Systems </h2>
 <p style="margin-right: 20%;"><span style="font-weight:bold">Quote 1:</span>
@@ -164,14 +265,14 @@
 <br>
 Note: Be aware of applying the principles of the hierarchy is essential in the system design. And using the size to differentiate the importance of the imformation is a simple but powerful tool. Each information and sections' porpotion in the screen<br>
 could simply guide people's reading order and attract their attention into something that designer intends them to notice.
-<br>
+<br><br>
 <span style="font-weight:bold">Quote 2:</span>
 "The way these grid systems are applied is essentially no different from how printmakers used them centuries ago, but one could argue that there is an even greater need for them today with the explosion of digital content: Digital<br> 
 design products must adapt to different screen sizes and show dynamic content, so there is no true original design. This forces designers to think systematically about visual layout."
 <br>
 Note: I enjoy using grid system a lot especially when it comes to design for multi screens. The grid system would help designer to follow the visual rules and display bunch of informations in a organized and logical way. It is really<br> 
 helpful while designing for small digital screens, everything can be simply arranged in each grid without causing any visual confusions but you still got varities to play with inside the small grids.
-<br>
+<br><br>
 <span style="font-weight:bold">Quote 3:</span>
 "When designers learn to not only think systematically about the design process, but also to implement those systems in software, they can build things that were not possible before."
 <br>
