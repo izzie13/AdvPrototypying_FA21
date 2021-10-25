@@ -48,6 +48,7 @@
 <img src="Flow Diagram F.jpg"
     width= auto 
     height= "800"/>
+    <br> 
 <p>I think it is really interesting to see how the ant lives in the human city, and I beg everyone has observed how ants move their food back to their home and how they around the walking people and obstacles either on the street or at the park.<br> 
     So I decide to program that scene in processing as my first project. At first, I imagined that there will be an ant trying to avoid being stepped on by people, and if it got stepped, the game is over. In order to make this process more close to<br> 
     the reality and to be fun to play with, I added the food and anthill components and add a carry-food task. While ant is keeping away from human to step it, ant also need to find the food and bring back food to the anthill and collect as much<br> 
@@ -56,147 +57,46 @@
     easing value. For the future, I would like to change the human’s walking path to be unpredictable. The walking path can be random as a bouncing ball inside of the window.<p>
     <br> 
     <h3>Coding Examples</h3>
-    <br> 
-    <p style="background-color:beige;"> Hill anthill;<br>
-        Ant steve;<br>
-        Foot step;<br>
-        Food apple;<br>
-        void setup() {<br>
-          &nbsp;size(800, 800);<br>
-          &nbsp;steve = new Ant();<br>
-          &nbsp;step = new Foot();<br>
-          &nbsp;apple = new Food();<br>
-          &nbsp;anthill = new Hill();<br>
-        }<br>
-        void draw() {<br>
-            &nbsp;background (163, 163, 163);<br>
-            &nbsp;anthill.score();<br>
-            &nbsp;anthill.display();<br>
-            &nbsp;apple.display();<br>
-            &nbsp;steve.move();<br>
-            &nbsp;steve.catchFood(apple.x, apple.y);<br>
-            &nbsp;steve.display();<br>
-            &nbsp;step.move(steve.x, steve.y);<br>
-            &nbsp;step.display();<br>
-            &nbsp;if (steve.carrying) {<br>
-                &nbsp;&nbsp;apple.move(steve.x, steve.y);<br>
-                &nbsp;}<br>
-          if (dist(apple.x, apple.y, anthill.x, anthill.y) <=anthill.size) {<br>
-            &nbsp;steve.carrying = false;<br>
-            &nbsp;anthill.score += 1;<br>
-            &nbsp;step.reduce();<br>
-            &nbsp;apple = new Food();<br>
-            &nbsp;}<br>
-          if (dist(steve.x, steve.y, step.x+step.size/2, step.y+step.size/2) <= step.size/2) {<br>
-            &nbsp;step.enlarge();<br>
-            &nbsp;}<br>
-          if (step.size >= 150) {<br>
-            &nbsp;fill(256, 256, 256);<br>
-            &nbsp;text("Game Over", width/2 - 50, height/2);<br>
-            &nbsp;stop();<br>
-            &nbsp;}<br>
-        }<br>
-        class Ant {<br>
-            &nbsp;float x, y;<br>
-            &nbsp;float size;<br>
-            &nbsp;boolean carrying;<br>
-            &nbsp;Ant() {<br>
-                &nbsp;&nbsp;x = width/2;<br>
-                &nbsp;&nbsp;y = height/2;<br>
-                &nbsp;&nbsp;size = 40;<br>
-                &nbsp;&nbsp;carrying = false;<br>
-                &nbsp;}<br>
-            <br>
-            &nbsp;void display() {<br>
-                &nbsp;&nbsp;fill(0, 0, 0);<br>
-                &nbsp;&nbsp;circle (x, y, 18);<br>
-                &nbsp;&nbsp;circle (x+9, y+9, 15);<br>
-                &nbsp;&nbsp;circle (x+18, y+18, 18);<br>
-              &nbsp;}<br>
-              &nbsp;void catchFood(float foodX, float foodY) {<br>
-                &nbsp;&nbsp;if (dist(x, y, foodX, foodY) <= size) {<br>
-                    &nbsp;&nbsp;&nbsp;carrying = true;<br>
-              }<br>
-              &nbsp;}<br>
-              &nbsp;void move() {<br>
-                &nbsp;&nbsp;x = mouseX;<br>
-                &nbsp;&nbsp;y = mouseY;<br>
-              &nbsp;}<br>
-          }<br>
-          <br>
-          class Food {<br>
-            &nbsp;float x, y;<br>
-            &nbsp;float easing;<br>
-            &nbsp;Food() {<br>
-                &nbsp;&nbsp;x = random(width);<br>
-                &nbsp;&nbsp;y = random(height);<br>
-                &nbsp;&nbsp;easing = 0.95;<br>
-              &nbsp;}<br>
-              &nbsp;void display() {<br>
-                &nbsp;&nbsp;noStroke();<br>
-                &nbsp;&nbsp;fill(0, 255, 0);<br>
-                &nbsp;&nbsp;circle (x, y, 24);<br>
-              &nbsp;}<br>
-              &nbsp;void move(float targetX, float targetY) {<br>
-                &nbsp;&nbsp;float dx = targetX - x;<br>
-                &nbsp;&nbsp;x += dx * easing;<br>
-                &nbsp;&nbsp;float dy = targetY - y;<br>
-                &nbsp;&nbsp;y += dy * easing;<br>
-              &nbsp;}<br>
-          }<br>
-          <br>
-          class Foot {<br>
-            &nbsp;float x, y;<br>
-            &nbsp;float size;<br>
-            &nbsp;float easing;<br>
-            &nbsp;Foot() {<br>
-                &nbsp;&nbsp;x = width/2;<br>
-                &nbsp;&nbsp;y = height/2;<br>
-                &nbsp;&nbsp;size = 80;<br>
-                &nbsp;&nbsp;easing = 0.05;<br>
-              &nbsp;}<br>
-            <br>
-            &nbsp;void display() {<br>
-                &nbsp;&nbsp;noFill();<br>
-                &nbsp;&nbsp;stroke(255, 255, 255);<br>
-                &nbsp;&nbsp;square(x, y, size);<br>
-              &nbsp;}<br>
-              &nbsp;void move(float targetX, float targetY) {<br>
-                &nbsp;&nbsp;float dx = targetX - x;<br>
-                &nbsp;&nbsp;x += dx * easing;<br>
-                &nbsp;&nbsp;float dy = targetY - y;<br>
-                &nbsp;&nbsp;//footstep variables<br>
-                &nbsp;&nbsp;y += dy * easing;<br>
-              &nbsp;}<br>
-              &nbsp;void enlarge() {<br>
-                &nbsp;&nbsp;size += 0.9;<br>
-              &nbsp;}<br>
-              &nbsp;void reduce() {<br>
-                &nbsp;&nbsp;size -= 0.9;<br>
-              &nbsp;}<br>
-          }<br>
-          class Hill {<br>
-            &nbsp;float x, y;<br>
-            &nbsp;float size;<br>
-            &nbsp;int score;<br>
-            &nbsp;Hill() {<br>
-                &nbsp;&nbsp;x = 607;<br>
-                &nbsp;&nbsp;y = 640;<br>
-                &nbsp;&nbsp;size = 60;<br>
-                &nbsp;&nbsp;score = 0;<br>
-              &nbsp;}<br>
-              &nbsp;void display() {<br>
-                &nbsp;&nbsp;fill(255, 255, 255);<br>
-                &nbsp;&nbsp;noStroke();<br>
-                &nbsp;&nbsp;triangle(550, 700, 632, 580, 714, 700);<br>
-              &nbsp;}<br>
-              &nbsp;void score() {<br>
-                &nbsp;&nbsp;fill(255, 255, 0);<br>
-                &nbsp;&nbsp;text(score, 430, 50);<br>
-                &nbsp;&nbsp;text("score:",350,50); <br>   
-                &nbsp;&nbsp;textSize(30);<br>
-              &nbsp;}<br>
-          }<br>
+    <p style="background-color:beige;", white-space: pre;> 
+        Hill anthill;<br> 
+        Ant steve;<br> 
+        Foot step;<br> 
+        Food apple;<br> 
+        void setup() {<br> 
+          size(800, 800);<br> 
+          steve = new Ant();<br> 
+          step = new Foot();<br> 
+          apple = new Food();<br> 
+          anthill = new Hill();<br> 
+        }
+        void draw() {
+          background (163, 163, 163);
+          anthill.score();
+          anthill.display();
+          apple.display();
+          steve.move();
+          steve.catchFood(apple.x, apple.y);
+          steve.display();
+          step.move(steve.x, steve.y);
+          step.display();
+          if (steve.carrying) {
+            apple.move(steve.x, steve.y);
+          }
+          if (dist(apple.x, apple.y, anthill.x, anthill.y) <=anthill.size) {
+            steve.carrying = false;
+            anthill.score += 1;
+            step.reduce();
+            apple = new Food();
+          }
+          if (dist(steve.x, steve.y, step.x+step.size/2, step.y+step.size/2) <= step.size/2) {
+            step.enlarge();
+          }
+          if (step.size >= 150) {
+            fill(256, 256, 256);
+            text("Game Over", width/2 - 50, height/2);
+            stop();
+          }
+        }
     </p>
 
 
