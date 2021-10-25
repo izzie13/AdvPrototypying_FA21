@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
 </head>
+* {
+    box-sizing: border-box;
+  }
+  
+  .column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+  }
+  
+  /* Clearfix (clear floats) */
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 <h1>Izzie Chen's Adv. Prototyping Projects</h1>
     
 <h2>Week 1: Natural System</h2>
@@ -41,6 +57,17 @@
 <img src="CodeGame.png"
     width= auto
     height= "800"/>
+    <div class="row">
+        <div class="column">
+          <img src="GameAntEscaping.png" style="width:100%">
+        </div>
+        <div class="column">
+          <img src="AntCatchFood.png" style="width:100%">
+        </div>
+        <div class="column">
+          <img src="BacktoHill.png" style="width:100%">
+        </div>
+      </div>
 <p>The image below shows first start the game, you need to use cursor to control the ant from a square which represents the human's footstep. </p>
 <img src="GameAntEscaping.png"
     width="600" 
