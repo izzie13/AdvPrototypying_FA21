@@ -33,17 +33,10 @@
 
 <h1><fontface="verdana" size="20px" >Izzie Chen's Adv. Prototyping Projects</fontface></h1>
     
-<h2 style="background-color:powderblue;">Week 1: Natural System</h2>
 
-<img src="UML Diagram.jpg" 
-    width="600" 
-    height= auto/> 
-<img src="workflow.jpg"
-    width="600" 
-    height= auto/>
 
-<h2 style="background-color:powderblue;">Week 2: Natural System </h2>
-<h3>from last Week, I added more components into the system to make the porject more close to the reality and more engaged. </h3>
+<h2 style="background-color:powderblue;">Project 1: Natural System </h2>
+
 <img src="UML Diagram F.jpg" 
     width= auto 
     height= "800"/> 
@@ -51,6 +44,8 @@
     width= auto 
     height= "800"/>
     <br> 
+<h3> Summary</h3>
+<br>
 <p class="paragraph">I think it is really interesting to see how the ant lives in the human city, and I beg everyone has observed how ants move their food back to their home and how they around the walking people and obstacles either on the street or at the park.<br> 
     So I decide to program that scene in processing as my first project. At first, I imagined that there will be an ant trying to avoid being stepped on by people, and if it got stepped, the game is over. In order to make this process more close to<br> 
     the reality and to be fun to play with, I added the food and anthill components and add a carry-food task. While ant is keeping away from human to step it, ant also need to find the food and bring back food to the anthill and collect as much<br> 
@@ -58,7 +53,7 @@
     I found the easing function on the Processing’s preference page, and I used easing a lot to make the food and the human follow after and created a pattern that the ant would carry the food and try to get away from the human by simply adjust the<br> 
     easing value. For the future, I would like to change the human’s walking path to be unpredictable. The walking path can be random as a bouncing ball inside of the window.<p>
     <br> 
-    <h3>Coding Examples</h3>
+    <h3>Code Example</h3>
     <pre><code>
         Hill anthill;
         Ant steve;
@@ -255,7 +250,160 @@
     the vector and make it turns to the certain direction. For the physical controller, I used cardboard to make it more easier to hold and operate. For the future consideration, I want to play with the gradient background<br> 
     to simulate the real sunrise and sunset sky through the photocell sensor.
 </p><br>
+<h3>Code Example</h3>
+    <pre><code>
+        import processing.serial.*;
 
+Serial myConnection;
+String serialValue = "";
+float potX = 0;
+float potY = 0;
+float photo = 0;
+PVector dir;
+Hill anthill;
+Ant steve;
+Foot step;
+Food apple;
+
+void setup() {
+  size(800, 800);
+  steve = new Ant();
+  step = new Foot();
+  apple = new Food();
+  anthill = new Hill();
+  myConnection = new Serial(this, Serial.list()[2], 9600);
+  myConnection.bufferUntil('\n');
+}
+void draw() {
+  background (photo, photo, photo);
+  anthill.score();
+  anthill.display();
+  apple.display();
+  steve.move(potX,potY, apple.x,apple.y);
+  steve.catchFood(apple.x, apple.y);
+  steve.display();
+  step.move(steve.x, steve.y);
+  step.changeEasing(map(photo, 0, 255, 0, 1));
+  step.display();
+  if (steve.carrying) {
+    //apple.changeEasing(map(photo,0,255,0,1));
+    apple.move(steve.x, steve.y);
+  }
+  if (dist(apple.x, apple.y, anthill.x, anthill.y) <=anthill.size) {
+    steve.carrying = false;
+    anthill.score += 1;
+    step.reduce();
+    apple = new Food();
+  }
+  if (dist(steve.x, steve.y, step.x+step.size/2, step.y+step.size/2) <= step.size/2) {
+    step.enlarge();
+  }
+  if (step.size >= step.critSize) {
+    fill(99, 70, 77);
+    text("Game Over", 350, 400);
+    //stop();
+  }
+}
+
+void serialEvent(Serial conn) {
+  String fromSerial = conn.readString();
+  if (fromSerial != null) {
+    String[]data = split(fromSerial, ',');
+    printArray(data);
+    if (data.length ==3) {
+      potX = float(data[0]);
+      potX = map(potX, 0, 4095, 0, 765);
+      potY = float(data[1]);
+      potY = map(potY, 0, 4095, 0, 765);
+      photo = float(data[2]);
+      photo = map(photo, 0, 4095, 0, 255);
+    }
+  }
+}
+class Ant {
+    PVector dir;
+    float x, y;
+    float size;
+    boolean carrying;
+    Ant() {
+      x = 0;
+      y = 0;
+      size = 40;
+      carrying = false;
+    }
+  
+    void display() {
+  
+      fill(0, 0, 0);
+      noStroke();
+      ellipseMode(CENTER);
+      rotate(dir.heading());
+      ellipse (0, 0, 62, 32);
+    }
+    void catchFood(float foodX, float foodY) {
+      if (dist(x, y, foodX, foodY) <= size) {
+        carrying = true;
+      }
+    }
+    void move(float x_, float y_, float ax, float ay) {
+      x = x_;
+      y = y_;
+      dir = new PVector(x_, y_). sub(new PVector(ax, ay));
+      dir.normalize();
+      translate(x_, y_);
+    }
+  }
+  class Food {
+    float x, y;
+    float adjEasing;
+    float size;
+    Food() {
+      x = random(width);
+      y = random(height);
+      size = 30;
+      adjEasing = 0.95;
+    }
+    void display() {
+      noStroke();
+      fill(163, 255, 33);
+      ellipse(x, y, size, size + size * 0.3);
+      ellipse(x + size/1.3, y, size, size + size * 0.3 );
+      fill(245, 66, 72);
+      ellipse(x + size/2-2, y + size/5-5, size/1.2, size/1.2 );
+      stroke(38, 38, 38);
+      curve(x + size/1.1-size/2.2, y + size/5-size/2, x + size/1.1-size/2.2, y + size/5-size/2, x + size/0.9-size/2.4, y - size/3-size/2.2, x + size/0.9-size/2.4, y - size/3-size/2.2);
+    }
+    void move(float targetX, float targetY) {
+      float dx = targetX - x;
+      x += dx * adjEasing;
+      float dy = targetY - y;
+      y += dy * adjEasing;
+    }
+  }
+  class Hill {
+    float x, y;
+    float size;
+    int score;
+    Hill() {
+      x = 607;
+      y = 640;
+      size = 60;
+      score = 0;
+    }
+    void display() {
+      fill(252, 186, 3);
+      noStroke();
+      triangle(550, 700, 632, 580, 714, 700);
+    }
+    void score() {
+      fill(99, 70, 77);
+      text(score, 430, 50);
+      text("score:",350,50);    
+      textSize(30);
+    }
+  }
+</code></pre>
+<br>
 <h2 style="background-color:powderblue;"> Programming Design Systems </h2>
 <p style="margin-right: 20%;"><span style="font-weight:bold">Quote 1:</span>
 "By increasing the size of important shapes and decreasing the size of less significant shapes, you can bring clarity to a design."
