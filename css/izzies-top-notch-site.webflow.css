@@ -426,7 +426,6 @@
   grid-row: 1;
   -ms-grid-column: 7;
   grid-column: 7;
-  
   grid-area: Area;
   -ms-grid-column-align: start;
   justify-self: start;
@@ -464,12 +463,12 @@
 
 #w-node-df2a3b7d-2898-ef22-56d5-205a7d61af95-7d61af85 {
   -ms-grid-row: span 1;
-  grid-row: span 1;
+  grid-row: 1;
   grid-row-start: span 1;
   -ms-grid-row-span: 1;
   grid-row-end: span 1;
   -ms-grid-column: span 1;
-  grid-column: span 1;
+  grid-column: 1;
   grid-column-start: span 1;
   -ms-grid-column-span: 1;
   grid-column-end: span 1;
@@ -479,12 +478,12 @@
 
 #w-node-df2a3b7d-2898-ef22-56d5-205a7d61af98-7d61af85 {
   -ms-grid-row: span 1;
-  grid-row: span 1;
+  grid-row: 1;
   grid-row-start: span 1;
   -ms-grid-row-span: 1;
   grid-row-end: span 1;
   -ms-grid-column: span 1;
-  grid-column: span 1;
+  grid-column: 1;
   grid-column-start: span 1;
   -ms-grid-column-span: 1;
   grid-column-end: span 1;
@@ -537,12 +536,12 @@
 
 #w-node-_2e835e49-0527-2d8c-1b5a-008aff3bfdc3-b7ae502c {
   -ms-grid-row: span 1;
-  grid-row:  span 1;
+  grid-row: 1;
   grid-row-start: span 1;
   -ms-grid-row-span: 1;
   grid-row-end: span 1;
   -ms-grid-column: span 1;
-  grid-column: span 1;
+  grid-column: 1;
   grid-column-start: span 1;
   -ms-grid-column-span: 1;
   grid-column-end: span 1;
@@ -550,12 +549,12 @@
 
 #w-node-_94cdb259-2a6a-e621-6fb1-ce262c219882-4c096063 {
   -ms-grid-row: span 1;
-  grid-row: span 1;
+  grid-row: 1;
   grid-row-start: span 1;
   -ms-grid-row-span: 1;
   grid-row-end: span 1;
   -ms-grid-column: span 1;
-  grid-column: span 1;
+  grid-column: 1;
   grid-column-start: span 1;
   -ms-grid-column-span: 1;
   grid-column-end: span 1;
