@@ -1,5 +1,5 @@
 <!DOCTYPE html><!--  This site was created in Webflow. http://www.webflow.com  -->
-<!--  Last Published: Mon Dec 06 2021 19:55:17 GMT+0000 (Coordinated Universal Time)  -->
+<!--  Last Published: Fri Dec 10 2021 23:34:08 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="619222f99bb61669b7ae502c" data-wf-site="618029094e9f0583f6f1bd8d">
 <head>
   <meta charset="utf-8">
@@ -19,27 +19,28 @@
   <link href="images/webclip.png" rel="apple-touch-icon">
 </head>
 <body>
-  <div class="content-copy">
-    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-2 w-nav">
-      <div class="container-2 w-container">
-        <nav role="navigation" class="nav-menu-2 w-nav-menu">
-          <a href="index.html" data-w-id="070d9a34-93ee-0fcc-8dcd-144bdb0f710d" class="nav-link-2 w-nav-link">Home</a>
-          <a href="natural-system.html" data-w-id="070d9a34-93ee-0fcc-8dcd-144bdb0f710f" class="nav-link-2 w-nav-link">Natural System</a>
-          <a href="control-system.html" data-w-id="070d9a34-93ee-0fcc-8dcd-144bdb0f7111" aria-current="page" class="nav-link-2 w-nav-link w--current">Control System</a>
-          <a href="sensor-project.html" data-w-id="070d9a34-93ee-0fcc-8dcd-144bdb0f7113" class="nav-link-2 w-nav-link">Data System</a>
-          <a href="#" data-w-id="070d9a34-93ee-0fcc-8dcd-144bdb0f7115" class="nav-link-2 w-nav-link">Project 4</a>
-          <a href="readings.html" data-w-id="070d9a34-93ee-0fcc-8dcd-144bdb0f7117" class="nav-link-2 w-nav-link">Readings</a>
-        </nav>
-        <div class="w-nav-button">
-          <div class="w-icon-nav-menu"></div>
-        </div>
+  <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-3 w-nav">
+    <div class="container-3 w-container">
+      <a href="#" class="w-nav-brand"></a>
+      <nav role="navigation" class="w-nav-menu">
+        <a href="index.html" data-w-id="b1cbaff0-8df7-55f3-4c83-6419d24681ae" class="w-nav-link">Home</a>
+        <a href="natural-system.html" data-w-id="b1cbaff0-8df7-55f3-4c83-6419d24681b0" class="w-nav-link">Natural System</a>
+        <a href="control-system.html" data-w-id="b1cbaff0-8df7-55f3-4c83-6419d24681b2" aria-current="page" class="w-nav-link w--current">Control System</a>
+        <a href="sensor-project.html" data-w-id="b1cbaff0-8df7-55f3-4c83-6419d24681b4" class="w-nav-link">Data System</a>
+        <a href="final-project.html" data-w-id="b1cbaff0-8df7-55f3-4c83-6419d24681b6" class="w-nav-link">Final Project</a>
+        <a href="readings.html" data-w-id="b1cbaff0-8df7-55f3-4c83-6419d24681b8" class="w-nav-link">Readings</a>
+      </nav>
+      <div class="w-nav-button">
+        <div class="w-icon-nav-menu"></div>
       </div>
     </div>
+  </div>
+  <div class="content-copy">
     <h1 class="heading-2">Project 2: Control System</h1>
     <div class="text-block">Summary</div>
     <p class="paragraph-summary">For the project 2, I choose to keep working on the ant system concept and trying to develop it with the controller. Because I saw there could be some fun opportunities to imply the sensors and controllers into the project. At first, I was imagine the controller can control the amount of the apple that the ant can find, or change the velocity of either ant or the footstep. However, I want to challenge myself to do a more complexed actions, so I used two controllers to control ant’s movement, and it turns out it is not that hard than I thought. Except of control ant’s movement, I used photocell to detect the real environment’s lightness and stimulate the real light condition digitally, and when the environment is dark, the ant can easily escape from human’s chase. Compare to my first version if the system, I updated footstep and apple’s shape to make them look more real, and instead of let the ant and the step’s shape keep in the same direction while moving, I tried to using vector to change their heading directions while looking for the target. I am half there, It is successful to make the ant’s head turns toward to the apple while it is moving, and when I apply the same code to the footstep, it doesn’t work, under the easing function, I cannot determine the previous positions of the step to calculate the vector and make it turns to the certain direction. For the physical controller, I used cardboard to make it more easier to hold and operate. For the future consideration, I want to play with the gradient background to simulate the real sunrise and sunset sky through the photocell sensor.</p>
     <div class="text-block">Process</div>
-    <div class="w-layout-grid grid"><img src="images/Screen-Shot-2021-11-15-at-1.24.04-AM.png" loading="lazy" id="w-node-_2e835e49-0527-2d8c-1b5a-008aff3bfdba-b7ae502c" sizes="(max-width: 767px) 100vw, (max-width: 991px) 133.8671875px, (max-width: 1919px) 41vw, 64vw" srcset="images/Screen-Shot-2021-11-15-at-1.24.04-AM-p-500.png 500w, images/Screen-Shot-2021-11-15-at-1.24.04-AM-p-800.png 800w, images/Screen-Shot-2021-11-15-at-1.24.04-AM.png 1039w" alt="" class="image-3"><img src="images/Screen-Shot-2021-11-15-at-1.23.48-AM.png" loading="lazy" id="w-node-_2e835e49-0527-2d8c-1b5a-008aff3bfdbb-b7ae502c" sizes="(max-width: 767px) 100vw, (max-width: 991px) 800px, (max-width: 1919px) 81vw, 92vw" srcset="images/Screen-Shot-2021-11-15-at-1.23.48-AM-p-500.png 500w, images/Screen-Shot-2021-11-15-at-1.23.48-AM-p-800.png 800w, images/Screen-Shot-2021-11-15-at-1.23.48-AM-p-1080.png 1080w, images/Screen-Shot-2021-11-15-at-1.23.48-AM.png 1244w" alt="" class="image-4"></div>
+    <div class="w-layout-grid grid"><img src="images/Screen-Shot-2021-11-15-at-1.24.04-AM.png" loading="lazy" id="w-node-_2e835e49-0527-2d8c-1b5a-008aff3bfdba-b7ae502c" sizes="(max-width: 767px) 100vw, (max-width: 991px) 133.6875px, (max-width: 1919px) 41vw, 64vw" srcset="images/Screen-Shot-2021-11-15-at-1.24.04-AM-p-500.png 500w, images/Screen-Shot-2021-11-15-at-1.24.04-AM-p-800.png 800w, images/Screen-Shot-2021-11-15-at-1.24.04-AM.png 1039w" alt="" class="image-3"><img src="images/Screen-Shot-2021-11-15-at-1.23.48-AM.png" loading="lazy" id="w-node-_2e835e49-0527-2d8c-1b5a-008aff3bfdbb-b7ae502c" sizes="(max-width: 767px) 100vw, (max-width: 991px) 800px, (max-width: 1919px) 81vw, 92vw" srcset="images/Screen-Shot-2021-11-15-at-1.23.48-AM-p-500.png 500w, images/Screen-Shot-2021-11-15-at-1.23.48-AM-p-800.png 800w, images/Screen-Shot-2021-11-15-at-1.23.48-AM-p-1080.png 1080w, images/Screen-Shot-2021-11-15-at-1.23.48-AM.png 1244w" alt="" class="image-4"></div>
     <div class="text-block">Demo Video</div>
     <div class="w-layout-grid grid-3">
       <div style="padding-top:56.17021276595745%" class="w-video w-embed"><iframe class="embedly-embed" src="https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fplayer.vimeo.com%2Fvideo%2F645955509%3Fh%3D1d3ddd8308%26app_id%3D122963&dntp=1&display_name=Vimeo&url=https%3A%2F%2Fvimeo.com%2F645955509&image=https%3A%2F%2Fi.vimeocdn.com%2Fvideo%2F1300095052-7ade0c002337d8c2c05b1505f22c13dd2da7e6d271fe1308e_640&key=c4e54deccf4d4ec997a64902e9a30300&type=text%2Fhtml&schema=vimeo" scrolling="no" title="Vimeo embed" frameborder="0" allow="autoplay; fullscreen" allowfullscreen="true"></iframe></div>
